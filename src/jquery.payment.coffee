@@ -143,6 +143,7 @@ reFormatNumeric = (e) ->
     value   = $target.val()
     value   = value.replace(/\D/g, '')
     $target.val(value)
+  return true
 
 # Format Card Number
 
@@ -152,6 +153,7 @@ reFormatCardNumber = (e) ->
     value   = $target.val()
     value   = $.payment.formatCardNumber(value)
     $target.val(value)
+  return true
 
 formatCardNumber = (e) ->
   # Only format if input is a number
@@ -186,6 +188,7 @@ formatCardNumber = (e) ->
   else if re.test(value + digit)
     e.preventDefault()
     setTimeout -> $target.val(value + digit + ' ')
+  return true
 
 formatBackCardNumber = (e) ->
   $target = $(e.currentTarget)
@@ -206,6 +209,7 @@ formatBackCardNumber = (e) ->
   else if /\s\d?$/.test(value)
     e.preventDefault()
     setTimeout -> $target.val(value.replace(/\d$/, ''))
+  return true
 
 # Format Expiry
 
@@ -215,6 +219,7 @@ reFormatExpiry = (e) ->
     value   = $target.val()
     value   = $.payment.formatExpiry(value)
     $target.val(value)
+  return true
 
 formatExpiry = (e) ->
   # Only format if input is a number
@@ -231,6 +236,7 @@ formatExpiry = (e) ->
   else if /^\d\d$/.test(val)
     e.preventDefault()
     setTimeout -> $target.val("#{val} / ")
+  return true
 
 formatForwardExpiry = (e) ->
   digit = String.fromCharCode(e.which)
@@ -267,6 +273,7 @@ formatBackExpiry = (e) ->
   if /\d\s\/\s$/.test(value)
     e.preventDefault()
     setTimeout -> $target.val(value.replace(/\d\s\/\s$/, ''))
+  return true
 
 # Format CVC
 
@@ -276,6 +283,7 @@ reFormatCVC = (e) ->
     value   = $target.val()
     value   = value.replace(/\D/g, '')[0...4]
     $target.val(value)
+  return true
 
 # Restrictions
 
